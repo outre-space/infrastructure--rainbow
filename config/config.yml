@@ -1,0 +1,34 @@
+name: Carte
+queryScheme: snake
+
+models:
+    -   name: Comment
+        queryable: false
+
+    -   name: Post
+        queryable: true
+        hasMany:
+            - Comment
+        belongsTo:
+            -   User
+
+    -   name: User
+        queryable: true
+        table: accounts
+        fieldNames:
+            email_address: email
+        hasMany:
+            -   Post
+
+options:
+    rest:
+        enabled: true
+        swagger: true
+        ignore:
+            - Comment.index
+            - User.save
+    graph:
+        playground: true
+        enabled: true
+
+
