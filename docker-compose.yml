@@ -1,16 +1,20 @@
 
-version: 3
+version: '3'
 services:
     backend:
-        build: .
+        image: outrespace/rainbow:latest
         ports:
         -   "3000:3000"
-        depends_on:
-            -   database
-    database:
-        image: mysql
-        ports:
-        -   "3336: 3306"
-        environment:
-            MYSQL_ROOT_PASSWORD: pass
-            MYSQL_DATABASE: db
+        env_file: .env
+        environment: 
+            - PORT=3000
+            - CONFIG_URL=
+        # depends_on:
+        #     -   database
+    # database:
+    #     image: mysql
+    #     ports:
+    #     -   "3336: 3306"
+    #     environment:
+    #         MYSQL_ROOT_PASSWORD: pass
+    #         MYSQL_DATABASE: db
