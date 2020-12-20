@@ -8,7 +8,7 @@ const {SchemaBuilder} = require('../lib/SchemaBuilder')
 const path = require('path')
 
 const middlewares = async () => {
-    const schema = await new SchemaBuilder().buildFromConfig(path.resolve('./config/config.yml'))
+    const schema = await new SchemaBuilder().buildFromConfig(path.resolve(process.env.CONFIG_URL))
 
     const m1 = graphqlHTTP({schema, graphiql: true})
 

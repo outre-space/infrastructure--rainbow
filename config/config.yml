@@ -20,7 +20,7 @@ models:
         hasMany:
             -   Post
 
-options:
+exports:
     rest:
         enabled: true
         swagger: true

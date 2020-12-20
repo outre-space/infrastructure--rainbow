@@ -6,15 +6,15 @@ services:
         ports:
         -   "3000:3000"
         env_file: .env
-        environment: 
-            - PORT=3000
-            - CONFIG_URL=
-        # depends_on:
-        #     -   database
-    # database:
-    #     image: mysql
-    #     ports:
-    #     -   "3336: 3306"
-    #     environment:
-    #         MYSQL_ROOT_PASSWORD: pass
-    #         MYSQL_DATABASE: db
+        environment:
+            - PORT=${PORT}
+            - CONFIG_URL=${CONFIG_URL}
+         depends_on:
+             -   database
+     database:
+         image: mysql
+         ports:
+         -   "3336: 3306"
+         environment:
+             MYSQL_ROOT_PASSWORD: pass
+             MYSQL_DATABASE: db
