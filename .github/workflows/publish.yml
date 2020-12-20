@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: BUILD AND PUBLISH
+name: docker-publish
 
 # Controls when the action will run.
 on:
@@ -67,7 +67,7 @@ jobs:
             -   name: Slack Notification
                 uses: rtCamp/action-slack-notify@v2
                 env:
-                    SLACK_CHANNEL: general
+                    SLACK_CHANNEL: git
                     SLACK_COLOR: '#3278BD'
                     SLACK_ICON: https://d36jcksde1wxzq.cloudfront.net/saas-mega/blueFingerprint.png
                     SLACK_MESSAGE: Backend-as-a-Service published to outrespace/rainbow:latest
