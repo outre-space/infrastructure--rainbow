@@ -61,3 +61,17 @@ jobs:
 
             -   name: Image digest
                 run: echo ${{ steps.docker_build.outputs.digest }}
+    notify:
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Slack Notification
+                uses: rtCamp/action-slack-notify@v2
+                env:
+                    SLACK_CHANNEL: general
+                    SLACK_COLOR: '#3278BD'
+                    SLACK_ICON: https://d36jcksde1wxzq.cloudfront.net/saas-mega/blueFingerprint.png
+                    SLACK_MESSAGE: Backend-as-a-Service published to outrespace/rainbow:latest
+                    SLACK_TITLE: Deployment Status
+                    SLACK_USERNAME: OutreDeployer
+                    SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+                    SLACK_FOOTER: A small step for a man, a giant step for humanity
