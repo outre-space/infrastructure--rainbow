@@ -12,18 +12,17 @@ const middlewares = async () => {
 
     const m1 = graphqlHTTP({schema, graphiql: true})
 
-    const doc = OpenAPI({schema, info: {title: 'Example API',},})
+    const doc = OpenAPI({schema, info: {title: 'Outre Rainbow APIs',},})
     const m2 = useSofa({schema, onRoute: i => doc.addRoute(i, {basePath: '/api/rest',}),})
 
     router.use('/graph', m1)
-    router.use('/rest', m2)
     router.get('/rest', (req, res) => res.json(doc.get()))
-    console.log(doc.get())
+    router.use('/rest', m2)
 
-    return m2
+    return
 }
 
 
-middlewares().then(console.log).catch(console.log)
+middlewares().catch(console.log)
 
 module.exports = router;
