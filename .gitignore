@@ -3,5 +3,5 @@ node_modules
 .env
 yarn.lock
 yarn-error.log
-manifests
+/manifests
 pipingserver-kubeconfig.yaml
