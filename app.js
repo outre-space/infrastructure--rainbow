@@ -9,13 +9,12 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.resolve('public')));
 
 logger.token('body', (req, res) => JSON.stringify(req.body))
-// app.use(logger(':remote-user [:date[clf]] :method :url HTTP/:http-version" :status :body'));
+app.use(logger('combined'));
 
-
-app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 
 module.exports = app;
