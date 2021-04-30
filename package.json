@@ -26,5 +26,8 @@
         "sofa-api": "^0.9.0",
         "sqlite3": "^5.0.0",
         "yaml": "^1.10.0"
+    },
+    "nodemonConfig": {
+        "ignore": ["public/swagger.json"]
     }
 }

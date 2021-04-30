@@ -3,18 +3,16 @@ const path = require('path');
 const logger = require('morgan');
 require('dotenv').config();
 
-const apiRouter = require('./routes/api');
+const Rainbow = require('./lib/App');
 
 const app = express();
+logger.token('body', (req) => JSON.stringify(req.body))
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.resolve('public')));
-
-logger.token('body', (req, res) => JSON.stringify(req.body))
 app.use(logger('combined'));
 
-app.use('/', apiRouter);
-
+Rainbow.start(express.Router()).then(router => app.use('/', router));
 
 module.exports = app;
